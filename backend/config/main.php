@@ -24,13 +24,7 @@ return [
             'class' => 'vova07\rbac\Module',
             'isBackend' => true
         ],
-        'test' => [
-            'class' => 'app\modules\test\Test',
-        ],
-         'sproba' => [
-            'class' => 'app\modules\sproba\Sproba',
-        ],
-         'tutorial' => [
+        'tutorial' => [
             'class' => 'app\modules\tutorial\Tutorial',
         ],
     ],

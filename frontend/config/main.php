@@ -12,12 +12,6 @@ return [
         'blogs' => [
             'controllerNamespace' => 'vova07\blogs\controllers\frontend'
         ],
-        'test' => [
-            'class' => 'app\modules\test\Test',
-        ],
-        'sproba' => [
-            'class' => 'app\modules\sproba\Sproba',
-        ],
     ],
     'components' => [
         'request' => [
