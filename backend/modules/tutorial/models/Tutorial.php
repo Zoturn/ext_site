@@ -2,6 +2,7 @@
 
 namespace app\modules\tutorial\models;
 
+use vova07\fileapi\behaviors\UploadBehavior;
 use Yii;
 
 /**
@@ -19,21 +20,41 @@ use Yii;
  * @property integer $date
  * @property integer $views
  */
-class Tutorial extends \yii\db\ActiveRecord
-{
+class Tutorial extends \yii\db\ActiveRecord {
+
+    public $previewPath = '@statics/web/blogs/previews/';
+    public $imagesTempPath = '@statics/temp/blogs/images/';
+    public $previewUrl = '/statics/blogs/previews';
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return '{{%tutorial}}';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function behaviors() {
+        return [
+            'uploadBehavior' => [
+                'class' => UploadBehavior::className(),
+                'attributes' => [
+                    'preview_url' => [
+                        'path' => $this->previewPath,
+                        'tempPath' => $this->imagesTempPath,
+                        'url' => $this->previewUrl
+                    ],
+                ]
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
         return [
             [['title', 'category_id', 'description_short', 'description', 'preview_url', 'status', 'alias', 'sort_order', 'date', 'views'], 'required'],
             [['category_id', 'status', 'sort_order', 'date', 'views'], 'integer'],
@@ -46,8 +67,7 @@ class Tutorial extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'title' => 'Title',
@@ -62,4 +82,5 @@ class Tutorial extends \yii\db\ActiveRecord
             'views' => 'Views',
         ];
     }
+
 }
