@@ -22,9 +22,9 @@ use Yii;
  */
 class Tutorial extends \yii\db\ActiveRecord {
 
-    public $previewPath = '@statics/web/blogs/previews/';
-    public $imagesTempPath = '@statics/temp/blogs/images/';
-    public $previewUrl = '/statics/blogs/previews';
+    public $previewPath = '@statics/web/tutorial/previews/';
+    public $imagesTempPath = '@statics/temp/tutorial/images/';
+    public $previewUrl = '/statics/tutorial/previews';
 
     /**
      * @inheritdoc

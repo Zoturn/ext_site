@@ -15,7 +15,7 @@ use yii\filters\VerbFilter;
  */
 class DefaultController extends Controller
 {
-    public $imagesTempPath = '@statics/temp/blogs/images/';
+    public $imagesTempPath = '@statics/temp/tutorial/images/';
     
     /**
      * @inheritdoc
