@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Май 23 2016 г., 21:36
+-- Время создания: Июн 02 2016 г., 13:23
 -- Версия сервера: 5.5.48
 -- Версия PHP: 5.5.33
 
@@ -72,10 +72,10 @@ INSERT INTO `yii2_start_blogs` (`id`, `title`, `alias`, `snippet`, `content`, `i
 -- --------------------------------------------------------
 
 --
--- Структура таблицы `yii2_start_category_for_tutorial`
+-- Структура таблицы `yii2_start_categoty_of_tutorials`
 --
 
-CREATE TABLE IF NOT EXISTS `yii2_start_category_for_tutorial` (
+CREATE TABLE IF NOT EXISTS `yii2_start_categoty_of_tutorials` (
   `id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
   `sort_order` int(11) NOT NULL
@@ -166,14 +166,16 @@ CREATE TABLE IF NOT EXISTS `yii2_start_profiles` (
   `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `surname` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `avatar_url` varchar(64) COLLATE utf8_unicode_ci NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `yii2_start_profiles`
 --
 
 INSERT INTO `yii2_start_profiles` (`user_id`, `name`, `surname`, `avatar_url`) VALUES
-(1, 'Administration', 'Site', '');
+(1, 'Administration', 'Site', ''),
+(2, 'Олександр', 'Савченко', '574e05f774429.jpg'),
+(3, 'Олександр', 'Савченко', '574e073286590.jpg');
 
 -- --------------------------------------------------------
 
@@ -187,20 +189,21 @@ CREATE TABLE IF NOT EXISTS `yii2_start_tutorial` (
   `category_id` int(11) NOT NULL,
   `description_short` text NOT NULL,
   `description` text NOT NULL,
-  `logo` varchar(64) NOT NULL,
+  `preview_url` varchar(64) NOT NULL,
   `status` int(11) NOT NULL,
   `alias` varchar(128) NOT NULL,
   `sort_order` int(11) NOT NULL,
   `date` int(11) NOT NULL,
   `views` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Дамп данных таблицы `yii2_start_tutorial`
 --
 
-INSERT INTO `yii2_start_tutorial` (`id`, `title`, `category_id`, `description_short`, `description`, `logo`, `status`, `alias`, `sort_order`, `date`, `views`) VALUES
-(1, 'Tutorial22', 1, 'Tutorial', 'Tutorial', '232', 1, 'Tutorial', 1, 1, 1);
+INSERT INTO `yii2_start_tutorial` (`id`, `title`, `category_id`, `description_short`, `description`, `preview_url`, `status`, `alias`, `sort_order`, `date`, `views`) VALUES
+(1, '1234', 12, 'yftgy', 'hgfgf', '5746c9f98030e.jpg', 12, '12', 12, 12, 123),
+(2, 'New title', 1, 'Всем привет это Сатурн', 'Добро пожаловать на дни еврейского умопомешательства и прочие праздники жизни', '574738ac54bc4.jpg', 1, 'alias', 1, 121311313, 1);
 
 -- --------------------------------------------------------
 
@@ -210,8 +213,8 @@ INSERT INTO `yii2_start_tutorial` (`id`, `title`, `category_id`, `description_sh
 
 CREATE TABLE IF NOT EXISTS `yii2_start_tutorial_category` (
   `id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `tutorial_id` int(11) NOT NULL
+  `tutorial_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
@@ -231,14 +234,16 @@ CREATE TABLE IF NOT EXISTS `yii2_start_users` (
   `status_id` smallint(6) NOT NULL DEFAULT '0',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `yii2_start_users`
 --
 
 INSERT INTO `yii2_start_users` (`id`, `username`, `email`, `password_hash`, `auth_key`, `token`, `role`, `status_id`, `created_at`, `updated_at`) VALUES
-(1, 'admin', 'admin@demo.com', '$2y$13$8DahHg9EPze2RgFWncE3ZuHhSGqV3uvxW3QNA9p5hBTC0D/UVcUe2', 'QMaek1oDk3Zt8soiTcMDbHtaQICiyRir', 'aINmxtTB429Qx5r6aeyVpW9q0ydA9AVo_1460971935', 'superadmin', 1, 1460971934, 1460971934);
+(1, 'admin', 'admin@demo.com', '$2y$13$8DahHg9EPze2RgFWncE3ZuHhSGqV3uvxW3QNA9p5hBTC0D/UVcUe2', 'QMaek1oDk3Zt8soiTcMDbHtaQICiyRir', 'aINmxtTB429Qx5r6aeyVpW9q0ydA9AVo_1460971935', 'superadmin', 1, 1460971934, 1460971934),
+(2, 'Zoturn', 'saturncheg@ukr.net', '$2y$13$ZO4tSIRut1WMkJBXgT/QBeJ37gvJrTP3Dl9xACWVFtqeuQxWl/ob6', '5tlSFvNmzkGpau9xNzeHCdnYI_nWgSXL', 'NVzm6ECbmgYvd_irJP11uMRVMP22wnyz_1464731135', 'user', 0, 1464731135, 1464731135),
+(3, 'Zoturnj', 'satturrn@gmail.com', '$2y$13$sT8sSrLjz7ARc2T061MAY.xhkyXYWoC6sOcuyG1iUJqTg4PjE3A1q', '9Yg0hO9NeSu5ARLEkPnw-a_xmX_3GmuG', '4R_D3YV1jPMCmwfFWL8uMXzlU0pU7D8D_1464731454', 'user', 0, 1464731454, 1464731454);
 
 -- --------------------------------------------------------
 
@@ -293,9 +298,9 @@ ALTER TABLE `yii2_start_blogs`
   ADD KEY `updated_at` (`updated_at`);
 
 --
--- Индексы таблицы `yii2_start_category_for_tutorial`
+-- Индексы таблицы `yii2_start_categoty_of_tutorials`
 --
-ALTER TABLE `yii2_start_category_for_tutorial`
+ALTER TABLE `yii2_start_categoty_of_tutorials`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -349,9 +354,7 @@ ALTER TABLE `yii2_start_tutorial`
 -- Индексы таблицы `yii2_start_tutorial_category`
 --
 ALTER TABLE `yii2_start_tutorial_category`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id` (`tutorial_id`,`category_id`) USING BTREE,
-  ADD KEY `category_id` (`category_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `yii2_start_users`
@@ -391,9 +394,9 @@ ALTER TABLE `Podija`
 ALTER TABLE `yii2_start_blogs`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT для таблицы `yii2_start_category_for_tutorial`
+-- AUTO_INCREMENT для таблицы `yii2_start_categoty_of_tutorials`
 --
-ALTER TABLE `yii2_start_category_for_tutorial`
+ALTER TABLE `yii2_start_categoty_of_tutorials`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_comments`
@@ -409,17 +412,22 @@ ALTER TABLE `yii2_start_module`
 -- AUTO_INCREMENT для таблицы `yii2_start_profiles`
 --
 ALTER TABLE `yii2_start_profiles`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_tutorial`
 --
 ALTER TABLE `yii2_start_tutorial`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `yii2_start_tutorial_category`
+--
+ALTER TABLE `yii2_start_tutorial_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_users`
 --
 ALTER TABLE `yii2_start_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_widget`
 --
@@ -442,13 +450,6 @@ ALTER TABLE `yii2_start_comments`
 --
 ALTER TABLE `yii2_start_profiles`
   ADD CONSTRAINT `FK_profile_user` FOREIGN KEY (`user_id`) REFERENCES `yii2_start_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Ограничения внешнего ключа таблицы `yii2_start_tutorial_category`
---
-ALTER TABLE `yii2_start_tutorial_category`
-  ADD CONSTRAINT `yii2_start_tutorial_category_ibfk_1` FOREIGN KEY (`tutorial_id`) REFERENCES `yii2_start_tutorial` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `yii2_start_tutorial_category_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `yii2_start_category_for_tutorial` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ограничения внешнего ключа таблицы `yii2_start_user_email`
