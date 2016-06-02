@@ -1,0 +1,1 @@
+<?= app\modules\rooms\models\Rooms::findOne(['id' => $model->room_id])->getAttribute('letter'); ?>
