@@ -113,24 +113,13 @@ class DefaultController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($model->load(Yii::$app->request->post())) {
-            if ($model->validate()) {
-                if ($model->save(false)) {
-                    return $this->refresh();
-                } else {
-                    Yii::$app->session->setFlash('danger', 'BACKEND_FLASH_FAIL_ADMIN_UPDATE');
-                    return $this->refresh();
-                }
-            } elseif (Yii::$app->request->isAjax) {
-                Yii::$app->response->format = Response::FORMAT_JSON;
-                return ActiveForm::validate($model);
-            }
-        }
-
-        return $this->render('update', [
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        } else {
+            return $this->render('update', [
                 'model' => $model,
-                'statusArray' => $statusArray
             ]);
+        }
     }
 
     /**
