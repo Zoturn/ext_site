@@ -8,9 +8,9 @@ use yii\data\ActiveDataProvider;
 use app\modules\tutorial\models\Tutorial;
 
 /**
- * TutorialSerch represents the model behind the search form about `app\modules\tutorial\models\Tutorial`.
+ * TutorialSearch represents the model behind the search form about `app\modules\tutorial\models\Tutorial`.
  */
-class TutorialSerch extends Tutorial
+class TutorialSearch extends Tutorial
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class TutorialSerch extends Tutorial
     {
         return [
             [['id', 'category_id', 'status', 'sort_order', 'date', 'views'], 'integer'],
-            [['title', 'description_short', 'description', 'logo', 'alias'], 'safe'],
+            [['title', 'description_short', 'description', 'preview_url', 'alias'], 'safe'],
         ];
     }
 
@@ -70,7 +70,7 @@ class TutorialSerch extends Tutorial
         $query->andFilterWhere(['like', 'title', $this->title])
             ->andFilterWhere(['like', 'description_short', $this->description_short])
             ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'logo', $this->logo])
+            ->andFilterWhere(['like', 'preview_url', $this->preview_url])
             ->andFilterWhere(['like', 'alias', $this->alias]);
 
         return $dataProvider;

@@ -12,6 +12,9 @@ return [
         'blogs' => [
             'controllerNamespace' => 'vova07\blogs\controllers\frontend'
         ],
+         'tutorial' => [
+            'class' => 'app\modules\tutorial\Tutorial',
+        ],
     ],
     'components' => [
         'request' => [

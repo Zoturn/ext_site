@@ -24,6 +24,12 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    
+    <div class="row">
+        <div class="col-sm-12">
+            <h2>Title:</h2> <?= $model->title ?>
+        </div>
+    </div>
 
     <?= DetailView::widget([
         'model' => $model,
@@ -33,7 +39,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'category_id',
             'description_short:ntext',
             'description:ntext',
-            'preview_url',
+            'preview_url:url',
             'status',
             'alias',
             'sort_order',

@@ -5,7 +5,6 @@ namespace app\modules\tutorial\controllers;
 use Yii;
 use app\modules\tutorial\models\Tutorial;
 use app\modules\tutorial\models\TutorialSearch;
-use vova07\fileapi\actions\UploadAction as FileAPIUpload;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -15,8 +14,6 @@ use yii\filters\VerbFilter;
  */
 class DefaultController extends Controller
 {
-    public $imagesTempPath = '@statics/temp/tutorial/images/';
-    
     /**
      * @inheritdoc
      */
@@ -29,19 +26,6 @@ class DefaultController extends Controller
                     'delete' => ['POST'],
                 ],
             ],
-        ];
-    }
-    
-    /**
-     * @inheritdoc
-     */
-    public function actions()
-    {
-        return [
-            'fileapi-upload' => [
-                'class' => FileAPIUpload::className(),
-                'path' => $this->imagesTempPath
-            ]
         ];
     }
 
@@ -72,57 +56,7 @@ class DefaultController extends Controller
         ]);
     }
 
-    /**
-     * Creates a new Tutorial model.
-     * If creation is successful, the browser will be redirected to the 'view' page.
-     * @return mixed
-     */
-    public function actionCreate()
-    {
-        $model = new Tutorial();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Updates an existing Tutorial model.
-     * If update is successful, the browser will be redirected to the 'view' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionUpdate($id)
-    {
-        $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
-        } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Deletes an existing Tutorial model.
-     * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param integer $id
-     * @return mixed
-     */
-    public function actionDelete($id)
-    {
-        $this->findModel($id)->delete();
-
-        return $this->redirect(['index']);
-    }
-
-    /**
+       /**
      * Finds the Tutorial model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

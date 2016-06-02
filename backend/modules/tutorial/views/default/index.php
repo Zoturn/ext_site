@@ -4,10 +4,10 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\modules\tutorial\models\TutorialSerch */
+/* @var $searchModel app\modules\tutorial\models\TutorialSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('ru', 'Tutorials');
+$this->title = 'Tutorials';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tutorial-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('ru', 'Create Tutorial'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Tutorial', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

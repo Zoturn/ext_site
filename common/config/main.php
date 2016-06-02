@@ -3,7 +3,7 @@
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'timeZone' => 'Europe/Moscow',
-    'language' => 'ru-RU',
+    'language' => 'ru',
     'modules' => [
         'users' => [
             'class' => 'vova07\users\Module',
@@ -51,18 +51,18 @@ return [
             'datetimeFormat' => 'HH:mm:ss dd.MM.y'
         ],
         'i18n' => [
-        'translations' => [
-            'ru*' => [
-                'class' => 'yii\i18n\PhpMessageSource',
-                //'basePath' => '@app/messages',
-                //'sourceLanguage' => 'en-US',
-                'fileMap' => [
-                    'app' => 'ru.php',
-                    'app/error' => 'error.php',
+            'translations' => [
+                'ru' => [
+                    'class' => 'yii\i18n\PhpMessageSource',
+                    'basePath' => '@app/messages',
+                    'sourceLanguage' => 'en-US',
+                    'fileMap' => [
+                        'app' => 'ru.php',
+                        'app/error' => 'error.php',
+                    ],
                 ],
             ],
         ],
-    ],
         'db' => require(__DIR__ . '/db.php')
     ],
     'params' => require(__DIR__ . '/params.php')

@@ -4,7 +4,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\tutorial\models\TutorialSerch */
+/* @var $model app\modules\tutorial\models\TutorialSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -38,8 +38,8 @@ use yii\widgets\ActiveForm;
     <?php // echo $form->field($model, 'views') ?>
 
     <div class="form-group">
-        <?= Html::submitButton(Yii::t('ru', 'Search'), ['class' => 'btn btn-primary']) ?>
-        <?= Html::resetButton(Yii::t('ru', 'Reset'), ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+        <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
