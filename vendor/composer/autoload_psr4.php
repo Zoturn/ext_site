@@ -24,5 +24,6 @@ return array(
     'vova07\\blogs\\' => array($vendorDir . '/vova07/yii2-start-blogs-module'),
     'vova07\\base\\' => array($vendorDir . '/vova07/yii2-start-base'),
     'vova07\\admin\\' => array($vendorDir . '/vova07/yii2-start-admin-module'),
+    'himiklab\\sortablegrid\\' => array($vendorDir . '/himiklab/yii2-sortable-grid-view-widget'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
 );

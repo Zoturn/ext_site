@@ -29,7 +29,8 @@
         "vova07/yii2-start-blogs-module": "*",
         "vova07/yii2-start-comments-module": "*",
         "vova07/yii2-start-rbac-module": "*",
-		"himiklab/yii2-sortable-grid-view-widget": "*"
+		"himiklab/yii2-sortable-grid-view-widget": "*",
+		"nill/yii2-blogs-category-module": "dev-master"
     },
     "require-dev": {
     	"yiisoft/yii2-debug": "*",

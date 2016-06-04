@@ -9,6 +9,7 @@
 
 use vova07\blogs\Module;
 use yii\widgets\ListView;
+use nill\blogs_category\widgets\WidgetCategory;
 
 $this->title = Module::t('blogs', 'FRONTEND_INDEX_TITLE');
 $this->params['breadcrumbs'][] = $this->title; ?>
@@ -39,6 +40,7 @@ $this->params['breadcrumbs'][] = $this->title; ?>
     </aside>
 
     <div class="col-sm-8 col-sm-pull-4">
+        <?= WidgetCategory::widget(); ?>    
         <?= ListView::widget(
             [
                 'dataProvider' => $dataProvider,

@@ -4,6 +4,7 @@ namespace vova07\blogs\models\backend;
 
 use vova07\blogs\Module;
 use Yii;
+use nill\blogs_category\models\BlogsCategory as Category;
 
 /**
  * Class Blog
@@ -20,8 +21,8 @@ use Yii;
  * @property integer $created_at Created time
  * @property integer $updated_at Updated time
  */
-class Blog extends \vova07\blogs\models\Blog
-{
+class Blog extends \vova07\blogs\models\Blog {
+
     /**
      * @var string Jui created date
      */
@@ -35,8 +36,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @return string Jui created date
      */
-    public function getCreatedAtJui()
-    {
+    public function getCreatedAtJui() {
         if (!$this->isNewRecord && $this->_createdAtJui === null) {
             $this->_createdAtJui = Yii::$app->formatter->asDate($this->created_at);
         }
@@ -46,16 +46,14 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * Set jui created date
      */
-    public function setCreatedAtJui($value)
-    {
+    public function setCreatedAtJui($value) {
         $this->_createdAtJui = $value;
     }
 
     /**
      * @return string Jui updated date
      */
-    public function getUpdatedAtJui()
-    {
+    public function getUpdatedAtJui() {
         if (!$this->isNewRecord && $this->_updatedAtJui === null) {
             $this->_updatedAtJui = Yii::$app->formatter->asDate($this->updated_at);
         }
@@ -65,16 +63,14 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * Set jui created date
      */
-    public function setUpdatedAtJui($value)
-    {
+    public function setUpdatedAtJui($value) {
         $this->_updatedAtJui = $value;
     }
 
     /**
      * @return string Readable blog status
      */
-    public function getStatus()
-    {
+    public function getStatus() {
         $statuses = self::getStatusArray();
 
         return $statuses[$this->status_id];
@@ -83,8 +79,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @return array Status array.
      */
-    public static function getStatusArray()
-    {
+    public static function getStatusArray() {
         return [
             self::STATUS_UNPUBLISHED => Module::t('blogs', 'STATUS_UNPUBLISHED'),
             self::STATUS_PUBLISHED => Module::t('blogs', 'STATUS_PUBLISHED')
@@ -94,8 +89,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         $rules = parent::rules();
         $rules[] = ['status_id', 'in', 'range' => array_keys(self::getStatusArray())];
         $rules[] = [['createdAtJui', 'updatedAtJui'], 'date'];
@@ -106,8 +100,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         $attributeLabels = parent::attributeLabels();
         $attributeLabels['createdAtJui'] = Module::t('blogs', 'ATTR_CREATED');
         $attributeLabels['updatedAtJui'] = Module::t('blogs', 'ATTR_UPDATED');
@@ -118,8 +111,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         $scenarios = parent::scenarios();
         $scenarios['admin-create'] = [
             'title',
@@ -130,7 +122,8 @@ class Blog extends \vova07\blogs\models\Blog
             'preview_url',
             'image_url',
             'createdAtJui',
-            'updatedAtJui'
+            'updatedAtJui',
+            'category_id'
         ];
         $scenarios['admin-update'] = [
             'title',
@@ -141,7 +134,8 @@ class Blog extends \vova07\blogs\models\Blog
             'preview_url',
             'image_url',
             'createdAtJui',
-            'updatedAtJui'
+            'updatedAtJui',
+            'category_id'
         ];
 
         return $scenarios;
@@ -150,8 +144,7 @@ class Blog extends \vova07\blogs\models\Blog
     /**
      * @inheritdoc
      */
-    public function beforeSave($insert)
-    {
+    public function beforeSave($insert) {
         if (parent::beforeSave($insert)) {
             if ($this->_createdAtJui) {
                 $this->created_at = Yii::$app->formatter->asTimestamp($this->_createdAtJui);
@@ -164,4 +157,9 @@ class Blog extends \vova07\blogs\models\Blog
             return false;
         }
     }
+
+    public function getCategory() {
+        return $this->hasOne(Category::className(), ['id' => 'category_id']);
+    }
+
 }

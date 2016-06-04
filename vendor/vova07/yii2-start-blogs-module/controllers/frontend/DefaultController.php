@@ -14,13 +14,12 @@ use yii\web\HttpException;
 /**
  * Default controller.
  */
-class DefaultController extends Controller
-{
+class DefaultController extends Controller {
+
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
+    public function behaviors() {
         $behaviors = parent::behaviors();
 
         if (!isset($behaviors['access']['class'])) {
@@ -46,17 +45,19 @@ class DefaultController extends Controller
     /**
      * Blog list page.
      */
-    function actionIndex()
-    {
+    function actionIndex($category='') {
+        $query = Blog::find()->published();
         $dataProvider = new ActiveDataProvider([
-            'query' => Blog::find()->published(),
+            'query' => $query,
             'pagination' => [
                 'pageSize' => $this->module->recordsPerPage
             ]
         ]);
 
+        $query->where(['category_id' => $category]);
+
         return $this->render('index', [
-            'dataProvider' => $dataProvider
+                    'dataProvider' => $dataProvider
         ]);
     }
 
@@ -70,13 +71,12 @@ class DefaultController extends Controller
      *
      * @throws \yii\web\HttpException 404 if blog was not found
      */
-    public function actionView($id, $alias)
-    {
+    public function actionView($id, $alias) {
         if (($model = Blog::findOne(['id' => $id, 'alias' => $alias])) !== null) {
             $this->counter($model);
 
             return $this->render('view', [
-                'model' => $model
+                        'model' => $model
             ]);
         } else {
             throw new HttpException(404);
@@ -88,8 +88,7 @@ class DefaultController extends Controller
      *
      * @param Blog $model Model
      */
-    protected function counter($model)
-    {
+    protected function counter($model) {
         $cookieName = 'blogs-views';
         $shouldCount = false;
         $views = Yii::$app->request->cookies->getValue($cookieName);
@@ -119,4 +118,5 @@ class DefaultController extends Controller
             }
         }
     }
+
 }
