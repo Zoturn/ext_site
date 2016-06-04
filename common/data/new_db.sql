@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 02 2016 г., 13:23
--- Версия сервера: 5.5.48
--- Версия PHP: 5.5.33
+-- Время создания: Июн 04 2016 г., 16:42
+-- Версия сервера: 5.5.48-log
+-- Версия PHP: 7.0.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -19,28 +19,6 @@ SET time_zone = "+00:00";
 --
 -- База данных: `new_db`
 --
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `Podija`
---
-
-CREATE TABLE IF NOT EXISTS `Podija` (
-  `id` int(11) NOT NULL,
-  `Name` varchar(50) NOT NULL,
-  `description` text,
-  `date` date NOT NULL,
-  `members` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `Podija`
---
-
-INSERT INTO `Podija` (`id`, `Name`, `description`, `date`, `members`) VALUES
-(1, 'Вилаз', 'чалтмиролт ьит', '2016-05-19', 'миьитбь'),
-(2, 'dfg', 'hf', '0000-00-00', 'cgj');
 
 -- --------------------------------------------------------
 
@@ -59,15 +37,37 @@ CREATE TABLE IF NOT EXISTS `yii2_start_blogs` (
   `views` int(11) NOT NULL DEFAULT '0',
   `status_id` smallint(6) NOT NULL DEFAULT '0',
   `created_at` int(11) NOT NULL,
-  `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  `updated_at` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Дамп данных таблицы `yii2_start_blogs`
 --
 
-INSERT INTO `yii2_start_blogs` (`id`, `title`, `alias`, `snippet`, `content`, `image_url`, `preview_url`, `views`, `status_id`, `created_at`, `updated_at`) VALUES
-(1, 'Blog', 'blog', '', '<p>Kontent</p>', '5742fe9ee76ce.jpg', '', 0, 0, 1464008380, 1464008380);
+INSERT INTO `yii2_start_blogs` (`id`, `title`, `alias`, `snippet`, `content`, `image_url`, `preview_url`, `views`, `status_id`, `created_at`, `updated_at`, `category_id`) VALUES
+(1, 'Blog', 'blog', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui do<strong>lorem ipsum</strong>, quia <strong>dolor sit, amet, consectetur, adipisci</strong> v<strong>elit, sed</strong> quia non numquam <strong>eius mod</strong>i <strong>tempor</strong>a <strong>incidunt, ut labore et dolore magna</strong>m <strong>aliqua</strong>m quaerat voluptatem. <strong>Ut enim ad minim</strong>a <strong>veniam, quis nostru</strong>m <strong>exercitation</strong>em <strong>ullam co</strong>rporis suscipit <strong>labori</strong>o<strong>s</strong>am, <strong>nisi ut aliquid ex ea commod</strong>i <strong>consequat</strong>ur? <strong>Quis aute</strong>m vel eum <strong>iure reprehenderit,</strong> qui <strong>in</strong> ea <strong>voluptate velit esse</strong>, quam nihil molestiae <strong>c</strong>onsequatur, vel <strong>illum</strong>, qui<strong>dolore</strong>m <strong>eu</strong>m <strong>fugiat</strong>, quo voluptas <strong>nulla pariatur</strong>?</p>', '<p> At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias <strong>exceptur</strong>i <strong>sint, obcaecat</strong>i <strong>cupiditat</strong>e <strong>non pro</strong>v<strong>ident</strong>, similique <strong>sunt in culpa</strong>, <strong>qui officia deserunt mollit</strong>ia <strong>anim</strong>i, <strong>id est laborum</strong> et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', '5752c9553b4ea.jpg', '5752c9f3e16ab.jpg', 1, 1, 1463961600, 1463961600, 1),
+(2, 'Blog2', 'blog2', '<p>Sed ut perspiciatis, unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa, quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt, explicabo. Nemo enim ipsam voluptatem, quia voluptas sit, aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos, qui ratione voluptatem sequi nesciunt, neque porro quisquam est, qui do<strong>lorem ipsum</strong>, quia <strong>dolor sit, amet, consectetur, adipisci</strong> v<strong>elit, sed</strong> quia non numquam <strong>eius mod</strong>i <strong>tempor</strong>a <strong>incidunt, ut labore et dolore magna</strong>m <strong>aliqua</strong>m quaerat voluptatem. <strong>Ut enim ad minim</strong>a <strong>veniam, quis nostru</strong>m <strong>exercitation</strong>em <strong>ullam co</strong>rporis suscipit <strong>labori</strong>o<strong>s</strong>am, <strong>nisi ut aliquid ex ea commod</strong>i <strong>consequat</strong>ur? <strong>Quis aute</strong>m vel eum <strong>iure reprehenderit,</strong> qui <strong>in</strong> ea <strong>voluptate velit esse</strong>, quam nihil molestiae <strong>c</strong>onsequatur, vel <strong>illum</strong>, qui<strong>dolore</strong>m <strong>eu</strong>m <strong>fugiat</strong>, quo voluptas <strong>nulla pariatur</strong>?</p>', '<p> At vero eos et accusamus et iusto odio dignissimos ducimus, qui blanditiis praesentium voluptatum deleniti atque corrupti, quos dolores et quas molestias <strong>exceptur</strong>i <strong>sint, obcaecat</strong>i <strong>cupiditat</strong>e <strong>non pro</strong>v<strong>ident</strong>, similique <strong>sunt in culpa</strong>, <strong>qui officia deserunt mollit</strong>ia <strong>anim</strong>i, <strong>id est laborum</strong> et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio, cumque nihil impedit, quo minus id, quod maxime placeat, facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet, ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.</p>', '5752c9553b4ea.jpg', '5752c9f3e16ab.jpg', 1, 1, 1463961600, 1463961600, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблицы `yii2_start_blogs_category`
+--
+
+CREATE TABLE IF NOT EXISTS `yii2_start_blogs_category` (
+  `id` int(11) NOT NULL,
+  `category_name` varchar(128) NOT NULL,
+  `category_description` text NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `yii2_start_blogs_category`
+--
+
+INSERT INTO `yii2_start_blogs_category` (`id`, `category_name`, `category_description`) VALUES
+(1, 'Категория 1', 'Описание'),
+(2, 'Категория 2', 'Описание 2');
 
 -- --------------------------------------------------------
 
@@ -97,7 +97,14 @@ CREATE TABLE IF NOT EXISTS `yii2_start_comments` (
   `status_id` tinyint(2) NOT NULL DEFAULT '0',
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `yii2_start_comments`
+--
+
+INSERT INTO `yii2_start_comments` (`id`, `parent_id`, `model_class`, `model_id`, `author_id`, `content`, `status_id`, `created_at`, `updated_at`) VALUES
+(1, NULL, 4232574542, 1, 1, 'comment', 1, 1465043506, 1465043506);
 
 -- --------------------------------------------------------
 
@@ -112,6 +119,13 @@ CREATE TABLE IF NOT EXISTS `yii2_start_comments_models` (
   `created_at` int(11) NOT NULL,
   `updated_at` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Дамп данных таблицы `yii2_start_comments_models`
+--
+
+INSERT INTO `yii2_start_comments_models` (`id`, `name`, `status_id`, `created_at`, `updated_at`) VALUES
+(4232574542, 'vova07\\blogs\\models\\frontend\\Blog', 1, 1465043499, 1465043499);
 
 -- --------------------------------------------------------
 
@@ -132,28 +146,8 @@ INSERT INTO `yii2_start_migration` (`version`, `apply_time`) VALUES
 ('m000000_000000_base', 1460971922),
 ('m140418_204054_create_module_tbl', 1460971935),
 ('m140526_193056_create_module_tbl', 1460972032),
-('m140911_074715_create_module_tbl', 1460972370);
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `yii2_start_module`
---
-
-CREATE TABLE IF NOT EXISTS `yii2_start_module` (
-  `id` int(11) NOT NULL,
-  `name` varchar(128) NOT NULL COMMENT 'Заголовок',
-  `text` text NOT NULL COMMENT 'Описание',
-  `sortOrder` int(11) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
---
--- Дамп данных таблицы `yii2_start_module`
---
-
-INSERT INTO `yii2_start_module` (`id`, `name`, `text`, `sortOrder`) VALUES
-(1, 'Заголовок', 'Описание', 2),
-(2, 'Заголовок2', 'Jagermeister', 1);
+('m140911_074715_create_module_tbl', 1460972370),
+('m141120_154932_create_yii2_start_blogs_category', 1465045436);
 
 -- --------------------------------------------------------
 
@@ -173,7 +167,7 @@ CREATE TABLE IF NOT EXISTS `yii2_start_profiles` (
 --
 
 INSERT INTO `yii2_start_profiles` (`user_id`, `name`, `surname`, `avatar_url`) VALUES
-(1, 'Administration', 'Site', ''),
+(1, 'Administration', 'Site', '5752ca46e67e2.jpg'),
 (2, 'Олександр', 'Савченко', '574e05f774429.jpg'),
 (3, 'Олександр', 'Савченко', '574e073286590.jpg');
 
@@ -282,12 +276,6 @@ INSERT INTO `yii2_start_widget` (`id`, `name`, `info`, `date`) VALUES
 --
 
 --
--- Индексы таблицы `Podija`
---
-ALTER TABLE `Podija`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `yii2_start_blogs`
 --
 ALTER TABLE `yii2_start_blogs`
@@ -296,6 +284,12 @@ ALTER TABLE `yii2_start_blogs`
   ADD KEY `views` (`views`),
   ADD KEY `created_at` (`created_at`),
   ADD KEY `updated_at` (`updated_at`);
+
+--
+-- Индексы таблицы `yii2_start_blogs_category`
+--
+ALTER TABLE `yii2_start_blogs_category`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Индексы таблицы `yii2_start_categoty_of_tutorials`
@@ -330,13 +324,6 @@ ALTER TABLE `yii2_start_comments_models`
 --
 ALTER TABLE `yii2_start_migration`
   ADD PRIMARY KEY (`version`);
-
---
--- Индексы таблицы `yii2_start_module`
---
-ALTER TABLE `yii2_start_module`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `sortOrder` (`sortOrder`);
 
 --
 -- Индексы таблицы `yii2_start_profiles`
@@ -384,15 +371,15 @@ ALTER TABLE `yii2_start_widget`
 --
 
 --
--- AUTO_INCREMENT для таблицы `Podija`
---
-ALTER TABLE `Podija`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
---
 -- AUTO_INCREMENT для таблицы `yii2_start_blogs`
 --
 ALTER TABLE `yii2_start_blogs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT для таблицы `yii2_start_blogs_category`
+--
+ALTER TABLE `yii2_start_blogs_category`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_categoty_of_tutorials`
 --
@@ -402,12 +389,7 @@ ALTER TABLE `yii2_start_categoty_of_tutorials`
 -- AUTO_INCREMENT для таблицы `yii2_start_comments`
 --
 ALTER TABLE `yii2_start_comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT для таблицы `yii2_start_module`
---
-ALTER TABLE `yii2_start_module`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_profiles`
 --
