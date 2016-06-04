@@ -38,6 +38,24 @@ echo Menu::widget(
                     'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
                 ],
                 [
+                    'label' => Yii::t('vova07/themes/admin', 'FAQ'),
+                    'url' => '#',
+                    'icon' => 'fa-question',
+                    'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                    'items' => [
+                        [
+                            'label' => Yii::t('vova07/themes/admin', 'FAQ'),
+                            'url' => ['/faq/faq/index'],
+                            'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                        ],
+                        [
+                            'label' => Yii::t('vova07/themes/admin', 'FAQ Category'),
+                            'url' => ['/faq/faqcategory/index'],
+                            'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                        ],
+                    ],
+                ],
+                [
                     'label' => Yii::t('vova07/themes/admin', 'Comments'),
                     'url' => ['/comments/default/index'],
                     'icon' => 'fa-comments',
