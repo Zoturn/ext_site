@@ -15,6 +15,9 @@ return [
          'tutorial' => [
             'class' => 'app\modules\tutorial\Tutorial',
         ],
+        'faq' => [
+            'class' => 'app\modules\faq\Module',
+        ],
     ],
     'components' => [
         'request' => [

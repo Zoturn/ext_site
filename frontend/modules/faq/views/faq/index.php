@@ -12,8 +12,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\modules\faq\models\FaqSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->registerMetaTag(['name' => 'description', 'content' => Yii::$app->meta->meta_description], 'description');
-$this->title = Yii::$app->meta->title;
+$this->title = 'sss';
 $this->params['breadcrumbs'][] = Yii::t('ru', 'FAQ')
 ?>
 
@@ -73,7 +72,7 @@ $this->params['breadcrumbs'][] = Yii::t('ru', 'FAQ')
 
         <div class="panel-group faq_accordion" id="accordion" role="tablist" aria-multiselectable="true">
             <?php
-            $query = nill\fsp\models\backend\Fsprooms::find()->all();
+            
             $collapse = Yii::$app->request->get('collapse');
             $ct_link = Yii::$app->request->get('category')!==NULL?'?category='.Yii::$app->request->get('category').'&collapse=':'?collapse=';
 
@@ -163,16 +162,9 @@ $this->params['breadcrumbs'][] = Yii::t('ru', 'FAQ')
         </a>
         <span class="faq_t">Skype:</span>
         <!--        ev.freestylepoker-->
-        <?= Statical::findOne(['title' => 'skype'])->text; ?>
-        <a href="<?= Statical::findOne(['title' => 'skype'])->alias; ?>" class="faq_quest"><?= Html::img(Yii::$app->assetManager->publish('@vova07/themes/site/assets/images/faq_skype.png')[1], ['class' => 'trainings_logo']) ?>
-            Связаться с нами
-        </a>
+        
         <hr class="hr">
-        <div class="widgets">
-            <?= \nill\promos\widgets\Widgetpromos::widget(['status' => 9]) ?>
-            <?= nill\recommend\widgets\Widgetrecommend::widget(['status' => 9]) ?>
-            <?= nill\links\widgets\Widgetlinks::widget(['status' => 9]) ?>
-        </div><!--/.ads-->
+        
     </div>
 </div>
 <style>

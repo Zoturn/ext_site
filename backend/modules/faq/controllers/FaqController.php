@@ -30,28 +30,28 @@ class FaqController extends Controller {
             [
                 'allow' => true,
                 'actions' => ['index', 'view'],
-                'roles' => ['BViewPromo']
+                'roles' => ['BViewBlogs']
             ]
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['create'],
-            'roles' => ['BCreatePromo']
+            'roles' => ['BCreateBlogs']
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['update'],
-            'roles' => ['BUpdatePromo']
+            'roles' => ['BUpdateBlogs']
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['delete', 'batch-delete'],
-            'roles' => ['BDeletePromo']
+            'roles' => ['BDeleteBlogs']
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['imperavi-get', 'imperavi-image-upload', 'imperavi-file-upload', 'fileapi-upload', 'sort'],
-            'roles' => ['BCreatePromo', 'BUpdatePromo']
+            'roles' => ['BCreateBlogs', 'BUpdateBlogs']
         ];
         $behaviors['verbs'] = [
             'class' => VerbFilter::className(),

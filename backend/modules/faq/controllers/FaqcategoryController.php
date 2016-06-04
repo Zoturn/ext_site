@@ -26,23 +26,23 @@ class FaqcategoryController extends Controller {
             [
                 'allow' => true,
                 'actions' => ['index', 'view'],
-                'roles' => ['BViewPromo']
+                'roles' => ['BViewBlogs']
             ]
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['create', 'sort'],
-            'roles' => ['BCreatePromo']
+            'roles' => ['BCreateBlogs']
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['update'],
-            'roles' => ['BUpdatePromo']
+            'roles' => ['BUpdateBlogs']
         ];
         $behaviors['access']['rules'][] = [
             'allow' => true,
             'actions' => ['delete', 'batch-delete'],
-            'roles' => ['BDeletePromo']
+            'roles' => ['BDeleteBlogs']
         ];
         $behaviors['verbs'] = [
             'class' => VerbFilter::className(),
