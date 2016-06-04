@@ -27,6 +27,9 @@ return [
         'tutorial' => [
             'class' => 'app\modules\tutorial\Tutorial',
         ],
+        'faq' => [
+            'class' => 'app\modules\faq\Module',
+        ],
         'blogs_category' => [
             'class' => 'nill\blogs_category\Module'
         ]
