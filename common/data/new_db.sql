@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 05 2016 г., 10:43
+-- Время создания: Июн 05 2016 г., 11:33
 -- Версия сервера: 5.5.48-log
 -- Версия PHP: 7.0.4
 
@@ -81,7 +81,15 @@ CREATE TABLE IF NOT EXISTS `yii2_start_categoty_of_tutorials` (
   `id` int(11) NOT NULL,
   `title` varchar(128) NOT NULL,
   `sort_order` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `yii2_start_categoty_of_tutorials`
+--
+
+INSERT INTO `yii2_start_categoty_of_tutorials` (`id`, `title`, `sort_order`) VALUES
+(1, 'Туториал 1', 1),
+(2, 'Туториал 2', 2);
 
 -- --------------------------------------------------------
 
@@ -289,8 +297,8 @@ CREATE TABLE IF NOT EXISTS `yii2_start_tutorial` (
 --
 
 INSERT INTO `yii2_start_tutorial` (`id`, `title`, `category_id`, `description_short`, `description`, `preview_url`, `status`, `alias`, `sort_order`, `date`, `views`) VALUES
-(1, '1234', 12, 'yftgy', 'hgfgf', '5746c9f98030e.jpg', 12, '12', 12, 12, 123),
-(2, 'New title', 1, 'Всем привет это Сатурн', 'Добро пожаловать на дни еврейского умопомешательства и прочие праздники жизни', '574738ac54bc4.jpg', 1, 'alias', 1, 121311313, 1);
+(1, '1234', 1, 'yftgy', '<p>hgfgf</p>', '5753de94a502d.jpg', 12, '12', 12, 0, 123),
+(2, 'New title', 2, 'Всем привет это Сатурн', '<p>Добро пожаловать на дни еврейского умопомешательства и прочие праздники <strong>жизни</strong></p>', '5753dcfe83b97.jpg', 1, 'alias', 1, 1465084800, 1);
 
 -- --------------------------------------------------------
 
@@ -489,7 +497,7 @@ ALTER TABLE `yii2_start_blogs_category`
 -- AUTO_INCREMENT для таблицы `yii2_start_categoty_of_tutorials`
 --
 ALTER TABLE `yii2_start_categoty_of_tutorials`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT для таблицы `yii2_start_comments`
 --

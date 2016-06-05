@@ -31,5 +31,5 @@ phpunit.phar
 # local phpunit config
 /phpunit.xml
 
-/statics
+!/statics
 !/vendor/
