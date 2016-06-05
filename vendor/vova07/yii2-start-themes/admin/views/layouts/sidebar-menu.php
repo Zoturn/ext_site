@@ -56,6 +56,24 @@ echo Menu::widget(
                     ],
                 ],
                 [
+                    'label' => Yii::t('vova07/themes/admin', 'Tutorial'),
+                    'url' => '#',
+                    'icon' => 'fa-question',
+                    'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                    'items' => [
+                        [
+                            'label' => Yii::t('vova07/themes/admin', 'Tutorial'),
+                            'url' => ['/tutorial/default/index'],
+                            'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                        ],
+                        [
+                            'label' => Yii::t('vova07/themes/admin', 'Tutorial Category'),
+                            'url' => ['/tutorial/category/index'],
+                            'visible' => Yii::$app->user->can('administrateBlogs') || Yii::$app->user->can('BViewBlogs'),
+                        ],
+                    ],
+                ],
+                [
                     'label' => Yii::t('vova07/themes/admin', 'Comments'),
                     'url' => ['/comments/default/index'],
                     'icon' => 'fa-comments',

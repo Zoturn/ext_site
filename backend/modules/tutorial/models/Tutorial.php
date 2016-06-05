@@ -56,8 +56,8 @@ class Tutorial extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['title', 'category_id', 'description_short', 'description', 'preview_url', 'status', 'alias', 'sort_order', 'date', 'views'], 'required'],
-            [['category_id', 'status', 'sort_order', 'date', 'views'], 'integer'],
+            [['title', 'category_id', 'description_short', 'description', 'preview_url', 'status', 'alias', 'date'], 'required'],
+            [['category_id', 'status', 'sort_order', 'views'], 'integer'],
             [['description_short', 'description'], 'string'],
             [['title', 'alias'], 'string', 'max' => 128],
             [['preview_url'], 'string', 'max' => 64],
@@ -81,6 +81,20 @@ class Tutorial extends \yii\db\ActiveRecord {
             'date' => 'Date',
             'views' => 'Views',
         ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            if ($this->date) {
+                $this->date = Yii::$app->formatter->asTimestamp($this->date);
+            }
+            return true;
+        } else {
+            return false;
+        }
     }
 
 }

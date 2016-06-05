@@ -14,10 +14,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php echo $this->render('_search', ['model' => $searchModel]); ?>
-
-    <?= ListView::widget([
+    <?=
+    ListView::widget([
         'dataProvider' => $dataProvider,
         'itemOptions' => ['class' => 'item'],
+        'options' => ['class' => 'blog'],
         'itemView' => '_index',
-    ]) ?>
+    ])
+    ?>
 </div>
