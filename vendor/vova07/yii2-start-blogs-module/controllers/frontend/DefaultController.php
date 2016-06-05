@@ -3,6 +3,7 @@
 namespace vova07\blogs\controllers\frontend;
 
 use vova07\blogs\models\frontend\Blog;
+use vova07\blogs\models\backend\Blog as BlogAdmin;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
@@ -28,7 +29,7 @@ class DefaultController extends Controller {
 
         $behaviors['access']['rules'][] = [
             'allow' => true,
-            'actions' => ['index', 'view'],
+            'actions' => ['index', 'view', 'create', 'blogs'],
             'roles' => ['viewBlogs']
         ];
         $behaviors['verbs'] = [
@@ -60,6 +61,25 @@ class DefaultController extends Controller {
                     'dataProvider' => $dataProvider
         ]);
     }
+    
+    /**
+     * Blog list page.
+     */
+    function actionBlogs() {
+        $query = Blog::find()->published();
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => $this->module->recordsPerPage
+            ]
+        ]);
+
+        $query->where(['author_id' => Yii::$app->user->id]);
+
+        return $this->render('blogs', [
+                    'dataProvider' => $dataProvider
+        ]);
+    }
 
     /**
      * Blog page.
@@ -81,6 +101,34 @@ class DefaultController extends Controller {
         } else {
             throw new HttpException(404);
         }
+    }
+    
+    /**
+     * Create post page.
+     */
+    public function actionCreate()
+    {
+        $model = new BlogAdmin(['scenario' => 'admin-create']);
+        $statusArray = BlogAdmin::getStatusArray();
+
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->validate()) {
+                if ($model->save(false)) {
+                    return $this->refresh();
+                } else {
+                    Yii::$app->session->setFlash('danger', Module::t('blogs', 'BACKEND_FLASH_FAIL_ADMIN_CREATE'));
+                    return $this->refresh();
+                }
+            } elseif (Yii::$app->request->isAjax) {
+                Yii::$app->response->format = Response::FORMAT_JSON;
+                return ActiveForm::validate($model);
+            }
+        }
+
+        return $this->render('create', [
+                'model' => $model,
+                'statusArray' => $statusArray
+            ]);
     }
 
     /**
