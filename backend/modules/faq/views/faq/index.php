@@ -25,7 +25,13 @@ $this->params['subtitle'] = yii::t('ru', 'FAQ');
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'title',
+            [
+                'attribute' => 'title',
+                'format'=>'raw',
+                'value' => function ($model){
+                    return Html::a($model['title'], ['update', 'id'=>$model->id]);
+                }
+            ],
 //            [
 //                'attribute' => 'text',
 //                'options' => ['style' => 'width:60%'],
