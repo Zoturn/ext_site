@@ -38,6 +38,10 @@ echo Menu::widget(
                     ]
                 ],
                 [
+                    'label' => Yii::t('vova07/themes/site', 'Новости'),
+                    'url' => ['/tutorial/default/index']
+                ],
+                [
                     'label' => Yii::t('vova07/themes/site', 'Contacts'),
                     'url' => ['/site/default/contacts']
                 ],
@@ -75,6 +79,11 @@ echo Menu::widget(
                     'label' => Yii::t('vova07/themes/site', 'Sign Out'),
                     'url' => ['/users/user/logout'],
                     'visible' => !Yii::$app->user->isGuest
+                ],
+                [
+                    'label' => Yii::t('vova07/themes/site', 'FAQ'),
+                    'url' => ['/faq/faq/index'],
+                   
                 ]
             ]
         ]

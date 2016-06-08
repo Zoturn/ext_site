@@ -12,7 +12,7 @@ use yii\helpers\Url;
 /* @var $searchModel app\modules\faq\models\FaqSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'sss';
+$this->title = 'FAQ';
 $this->params['breadcrumbs'][] = Yii::t('ru', 'FAQ')
 ?>
 
