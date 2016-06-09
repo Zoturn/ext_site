@@ -11,6 +11,9 @@ use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\Cookie;
 use yii\web\HttpException;
+use vova07\fileapi\actions\UploadAction as FileAPIUpload;
+use vova07\imperavi\actions\GetAction as ImperaviGet;
+use vova07\imperavi\actions\UploadAction as ImperaviUpload;
 
 /**
  * Default controller.
@@ -32,15 +35,52 @@ class DefaultController extends Controller {
             'actions' => ['index', 'view', 'create', 'blogs'],
             'roles' => ['viewBlogs']
         ];
+        $behaviors['access']['rules'][] = [
+            'allow' => true,
+            'actions' => ['imperavi-get', 'imperavi-image-upload', 'imperavi-file-upload', 'fileapi-upload'],
+            'roles' => ['BCreateBlogs', 'BUpdateBlogs']
+        ];
         $behaviors['verbs'] = [
             'class' => VerbFilter::className(),
             'actions' => [
                 'index' => ['get'],
-                'view' => ['get']
+                'view' => ['get'],
+                'create' => ['get', 'post'],
+                'update' => ['get', 'put', 'post'],
+                'delete' => ['post', 'delete'],
             ]
         ];
 
         return $behaviors;
+    }
+    
+    /**
+     * @inheritdoc
+     */
+    public function actions()
+    {
+        return [
+            'imperavi-get' => [
+                'class' => ImperaviGet::className(),
+                'url' => $this->module->contentUrl,
+                'path' => $this->module->contentPath
+            ],
+            'imperavi-image-upload' => [
+                'class' => ImperaviUpload::className(),
+                'url' => $this->module->contentUrl,
+                'path' => $this->module->contentPath
+            ],
+            'imperavi-file-upload' => [
+                'class' => ImperaviUpload::className(),
+                'url' => $this->module->fileUrl,
+                'path' => $this->module->filePath,
+                'uploadOnlyImage' => false
+            ],
+            'fileapi-upload' => [
+                'class' => FileAPIUpload::className(),
+                'path' => $this->module->imagesTempPath
+            ]
+        ];
     }
 
     /**
