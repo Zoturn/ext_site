@@ -6,11 +6,11 @@ use yii\widgets\ActiveForm;
 use vova07\imperavi\Widget as Imperavi;
 use yii\helpers\Url;
 use yii\jui\DatePicker;
-use app\modules\tutorial\models\CategotyOfTutorials as Category;
+use nill\blogs_category\models\BlogsCategory as Category;
 use yii\helpers\ArrayHelper;
+/* @var $model app\modules\tutorial\models\Tutorial */
 
 /* @var $this yii\web\View */
-/* @var $model app\modules\tutorial\models\Tutorial */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -32,7 +32,7 @@ use yii\helpers\ArrayHelper;
 
     <?=
     $form->field($model, 'category_id')->dropDownList(ArrayHelper::map(
-                    Category::find()->asArray()->all(), 'id', 'title'), ['prompt' => 'Select category']);
+                    Category::find()->asArray()->all(), 'id', 'category_name'), ['prompt' => 'Select category']);
     ?>
 
     <?= $form->field($model, 'description_short')->textarea(['rows' => 6]) ?>

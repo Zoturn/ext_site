@@ -54,8 +54,9 @@ class DefaultController extends Controller {
                 'pageSize' => $this->module->recordsPerPage
             ]
         ]);
-
-        $query->where(['category_id' => $category]);
+        if(!empty($category)) {
+            $query->where(['category_id' => $category]);
+        }
 
         return $this->render('index', [
                     'dataProvider' => $dataProvider
@@ -114,7 +115,7 @@ class DefaultController extends Controller {
         if ($model->load(Yii::$app->request->post())) {
             if ($model->validate()) {
                 if ($model->save(false)) {
-                    return $this->refresh();
+                    return $this->redirect(['index']);
                 } else {
                     Yii::$app->session->setFlash('danger', Module::t('blogs', 'BACKEND_FLASH_FAIL_ADMIN_CREATE'));
                     return $this->refresh();

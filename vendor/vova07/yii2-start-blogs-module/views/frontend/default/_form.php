@@ -32,52 +32,23 @@ use yii\helpers\ArrayHelper;
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12">
-        <?= $form->field($model, 'status_id')->dropDownList($statusArray) ?>
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <?=
-        $form->field($model, 'createdAtJui')->widget(
-                DatePicker::className(), [
-            'options' => [
-                'class' => 'form-control'
-            ],
-            'clientOptions' => [
-                'dateFormat' => 'dd.mm.yy',
-                'changeMonth' => true,
-                'changeYear' => true
-            ]
-                ]
-        );
-        ?>
-    </div>
-    <div class="col-sm-6">
-        <?=
-        $form->field($model, 'updatedAtJui')->widget(
-                DatePicker::className(), [
-            'options' => [
-                'class' => 'form-control'
-            ],
-            'clientOptions' => [
-                'dateFormat' => 'dd.mm.yy',
-                'changeMonth' => true,
-                'changeYear' => true
-            ]
-                ]
-        );
-        ?>
-    </div>
-</div>
-<div class="row">
     <div class="col-sm-6">
         <?=
         $form->field($model, 'preview_url')->widget(
                 FileAPI::className(), [
             'settings' => [
                 'url' => ['/blogs/default/fileapi-upload']
+            ],
+            'crop' => true,
+            'cropResizeWidth' => 100,
+            'cropResizeHeight' => 100,
+            'jcropSettings' => [
+                'aspectRatio' => 5/2,
+                'bgColor' => '#ffffff',
+                'maxSize' => [200, 800],
+                'minSize' => [100, 100],
+                'keySupport' => false, // Important param to hide jCrop radio button.
+                'selection' => '100%'
             ]
                 ]
         )

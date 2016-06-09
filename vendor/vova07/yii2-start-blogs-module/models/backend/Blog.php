@@ -124,7 +124,7 @@ class Blog extends \vova07\blogs\models\Blog {
             'createdAtJui',
             'updatedAtJui',
             'category_id',
-            'user_id'
+            'author_id'
         ];
         $scenarios['admin-update'] = [
             'title',
@@ -137,7 +137,7 @@ class Blog extends \vova07\blogs\models\Blog {
             'createdAtJui',
             'updatedAtJui',
             'category_id',
-            'user_id'
+            'author_id'
         ];
 
         return $scenarios;
@@ -147,7 +147,7 @@ class Blog extends \vova07\blogs\models\Blog {
      * @inheritdoc
      */
     public function beforeSave($insert) {
-        $this->user_id = Yii::$app->user->id;
+        $this->author_id = Yii::$app->user->id;
         if (parent::beforeSave($insert)) {
             if ($this->_createdAtJui) {
                 $this->created_at = Yii::$app->formatter->asTimestamp($this->_createdAtJui);
